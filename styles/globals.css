@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Headers */
+h3 {
+    font-weight: bold;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "San Francisco", Roboto, sans-serif;
+    line-height: 1.5;
+    margin: 2.5rem;
+}
+
+/* Verse numbers */
+.verse-num {
+    font-size: small;
+    color: gray;
+}
+
+p {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
