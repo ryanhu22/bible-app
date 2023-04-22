@@ -105,7 +105,7 @@ function BurgerMenu({ currentBook }) {
         </button>
 
         {isOpen && (
-          <div className="absolute h-screen overflow-auto left-2 mt-2 w-full md:w-3/4 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+          <div className="absolute h-[70vh] overflow-y-auto left-2 mt-2 w-full md:w-3/4 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
             <div>
               {/* Old Testament */}
               <a

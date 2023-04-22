@@ -22,8 +22,8 @@ function Passage({ passageHTML, searchFunc, book, chapter }) {
   // Props for selection pop-up
   const [showPopup, setShowPopup] = useState(false);
   const [windowWidth, setWindowWidth] = useState(0);
-  const [popupX, setPopupX] = useState(0);
-  const [popupY, setPopupY] = useState(0);
+  const [popupX, setPopupX] = useState(400);
+  const [popupY, setPopupY] = useState(400);
 
   // Props for comment-functionality
   const [commentInput, setCommentInput] = useState("");
