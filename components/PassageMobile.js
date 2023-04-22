@@ -318,7 +318,7 @@ function PassageMobile({ passageHTML, searchFunc, book, chapter }) {
         console.log("Selection Yellow");
         const range = selection.getRangeAt(0);
 
-        const clearHighlight = highlightRange(range, "span", {
+        const clearHighlight = highlightRange(globalRange, "span", {
           class: `bg-yellow-100`,
         });
         const uniqueId =
@@ -344,7 +344,7 @@ function PassageMobile({ passageHTML, searchFunc, book, chapter }) {
       if (!selection.isCollapsed) {
         const range = selection.getRangeAt(0);
 
-        const clearHighlight = highlightRange(range, "span", {
+        const clearHighlight = highlightRange(globalRange, "span", {
           class: `bg-blue-100`,
         });
         const uniqueId =
@@ -371,7 +371,7 @@ function PassageMobile({ passageHTML, searchFunc, book, chapter }) {
       if (!selection.isCollapsed) {
         const range = selection.getRangeAt(0);
 
-        const clearHighlight = highlightRange(range, "span", {
+        const clearHighlight = highlightRange(globalRange, "span", {
           class: `bg-red-100`,
         });
         const uniqueId =
@@ -397,7 +397,7 @@ function PassageMobile({ passageHTML, searchFunc, book, chapter }) {
     if (selection) {
       if (!selection.isCollapsed) {
         const range = selection.getRangeAt(0);
-        const clearHighlight = highlightRange(range, "span", {
+        const clearHighlight = highlightRange(globalRange, "span", {
           class: "bg-white",
         });
         const uniqueId =
