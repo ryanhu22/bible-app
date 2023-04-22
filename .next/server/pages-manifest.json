@@ -2,7 +2,5 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/api/auth/[...nextauth]": "pages/api/auth/[...nextauth].js",
-  "/search/[query]": "pages/search/[query].js",
-  "/auth/signin": "pages/auth/signin.js"
+  "/search/[query]": "pages/search/[query].js"
 }

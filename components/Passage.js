@@ -247,7 +247,13 @@ function Passage({ passageHTML, searchFunc, book, chapter }) {
   };
 
   const handleSelection = () => {
-    const selection = window.getSelection();
+    var selection = null;
+    if (window.getSelection) {
+      selection = window.getSelection();
+    } else if (typeof document.selection !== "undefined") {
+      selection = document.selection;
+    }
+
     if (selection.type === "Range") {
       const range = selection.getRangeAt(0);
       const rect = range.getBoundingClientRect();
@@ -267,6 +273,83 @@ function Passage({ passageHTML, searchFunc, book, chapter }) {
 
         const clearHighlight = highlightRange(range, "span", {
           class: `bg-${color}-100`,
+        });
+        const uniqueId =
+          Date.now().toString(36) + Math.random().toString(36).substring(2, 5);
+        addHighlight(uniqueId, clearHighlight);
+      }
+
+      // Remove user selection
+      if (selection.empty) {
+        selection.empty();
+      }
+    }
+    const curr_html = propRef.current.outerHTML;
+    if (session?.user) {
+      saveHTMLToDB(session.user.email, book, chapter, curr_html);
+    }
+    setShowPopup(false);
+  };
+
+  const highlightYellow = () => {
+    const selection = window.getSelection();
+    if (selection) {
+      if (!selection.isCollapsed) {
+        const range = selection.getRangeAt(0);
+
+        const clearHighlight = highlightRange(range, "span", {
+          class: `bg-yellow-100`,
+        });
+        const uniqueId =
+          Date.now().toString(36) + Math.random().toString(36).substring(2, 5);
+        addHighlight(uniqueId, clearHighlight);
+      }
+
+      // Remove user selection
+      if (selection.empty) {
+        selection.empty();
+      }
+    }
+    const curr_html = propRef.current.outerHTML;
+    if (session?.user) {
+      saveHTMLToDB(session.user.email, book, chapter, curr_html);
+    }
+    setShowPopup(false);
+  };
+  const highlightBlue = () => {
+    const selection = window.getSelection();
+    if (selection) {
+      if (!selection.isCollapsed) {
+        const range = selection.getRangeAt(0);
+
+        const clearHighlight = highlightRange(range, "span", {
+          class: `bg-blue-100`,
+        });
+        const uniqueId =
+          Date.now().toString(36) + Math.random().toString(36).substring(2, 5);
+        addHighlight(uniqueId, clearHighlight);
+      }
+
+      // Remove user selection
+      if (selection.empty) {
+        selection.empty();
+      }
+    }
+    const curr_html = propRef.current.outerHTML;
+    if (session?.user) {
+      saveHTMLToDB(session.user.email, book, chapter, curr_html);
+    }
+    setShowPopup(false);
+  };
+
+  const highlightRed = () => {
+    const selection = window.getSelection();
+    if (selection) {
+      if (!selection.isCollapsed) {
+        const range = selection.getRangeAt(0);
+
+        const clearHighlight = highlightRange(range, "span", {
+          class: `bg-red-100`,
         });
         const uniqueId =
           Date.now().toString(36) + Math.random().toString(36).substring(2, 5);
@@ -373,15 +456,15 @@ function Passage({ passageHTML, searchFunc, book, chapter }) {
                   <div className="flex mt-4 justify-center items-center gap-4">
                     <button
                       className="w-6 h-6 rounded-full bg-yellow-300 hover:border hover:border-black hover:scale-125 transition-all duration-150 ease-out"
-                      onClick={() => highlight("yellow")}
+                      onClick={highlightYellow}
                     ></button>
                     <button
                       className="w-6 h-6 rounded-full bg-blue-300 hover:border hover:border-black hover:scale-125 transition-all duration-150 ease-out"
-                      onClick={() => highlight("blue")}
+                      onClick={highlightBlue}
                     ></button>
                     <button
                       className="w-6 h-6 rounded-full bg-red-300 hover:border hover:border-black hover:scale-125 transition-all duration-150 ease-out"
-                      onClick={() => highlight("red")}
+                      onClick={highlightRed}
                     ></button>
                     <button
                       className="w-6 h-6 rounded-full bg-purple-300 hover:border hover:border-black hover:scale-125 transition-all duration-150 ease-out"
