@@ -2,7 +2,8 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState, useRef } from "react";
 import ChatButton from "../../components/ChatButton";
-import Passage from "../../components/Passage";
+import PassageMobile from "../../components/PassageMobile";
+import PassageDesktop from "../../components/PassageDesktop";
 import Search from "../../components/Search";
 import BurgerMenu from "../../components/BurgerMenu";
 import { signIn, signOut, useSession } from "next-auth/react";
@@ -10,6 +11,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../firebase";
 
 export default function SearchPage() {
+  const [isMobile, setIsMobile] = useState(false);
   const { data: session } = useSession();
   const router = useRouter();
   const { query } = router.query;
@@ -20,6 +22,18 @@ export default function SearchPage() {
   const [passageHTML, setPassageHTML] = useState("");
   const [isSignOutOpen, setIsSignOutOpen] = useState(false);
   const signOutRef = useRef(null);
+
+  // Determine if mobile or desktop view
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    handleResize(); // set initial state based on window width
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   // Fetch the query
   useEffect(() => {
@@ -202,14 +216,29 @@ export default function SearchPage() {
         {separateNumberAndCapitalize(book)} {chapter}
       </p>
 
-      <div className="mx-3 xl:mx-16">
-        <Passage
-          passageHTML={passageHTML}
-          searchFunc={search}
-          book={book}
-          chapter={chapter}
-        />
-      </div>
+      {isMobile ? (
+        <div>
+          <div className="mx-3 xl:mx-16">
+            <PassageMobile
+              passageHTML={passageHTML}
+              searchFunc={search}
+              book={book}
+              chapter={chapter}
+            />
+          </div>
+        </div>
+      ) : (
+        <div>
+          <div className="mx-3 xl:mx-16">
+            <PassageDesktop
+              passageHTML={passageHTML}
+              searchFunc={search}
+              book={book}
+              chapter={chapter}
+            />
+          </div>
+        </div>
+      )}
 
       <ChatButton />
     </div>
