@@ -105,92 +105,94 @@ function BurgerMenu({ currentBook }) {
         </button>
 
         {isOpen && (
-          <div className="absolute left-2 mt-2 w-full md:w-3/4 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
-            {/* Old Testament */}
-            <a
-              className="block text-center px-4 py-2 text-sm text-gray-700 bg-gray-50 cursor-pointer disabled"
-              role="menuitem"
-            >
-              Old Testament
-            </a>
-            <div
-              className="grid grid-cols-4 md:grid-cols-5 gap-2"
-              role="menu"
-              aria-orientation="vertical"
-              aria-labelledby="options-menu"
-            >
-              {booksOT.map((book) =>
-                book.toLowerCase().replace(/\s/g, "") === currentBook ? (
-                  <a
-                    href={
-                      "/search/" +
-                      book.toLowerCase().replace(/\s/g, "") +
-                      "-" +
-                      "1"
-                    }
-                    className="block font-bold px-4 py-2 text-sm text-gray-700 bg-blue-100 hover:text-gray-900 cursor-pointer"
-                    role="menuitem"
-                  >
-                    {book}
-                  </a>
-                ) : (
-                  <a
-                    href={
-                      "/search/" +
-                      book.toLowerCase().replace(/\s/g, "") +
-                      "-" +
-                      "1"
-                    }
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                    role="menuitem"
-                  >
-                    {book}
-                  </a>
-                )
-              )}
-            </div>
-            {/* New Testament */}
-            <a
-              className="block text-center px-4 py-2 text-sm text-gray-700 bg-gray-50 cursor-pointer disabled"
-              role="menuitem"
-            >
-              New Testament
-            </a>
-            <div
-              className="grid grid-cols-4 md:grid-cols-5 gap-2"
-              role="menu"
-              aria-orientation="vertical"
-              aria-labelledby="options-menu"
-            >
-              {booksNT.map((book) =>
-                book.toLowerCase().replace(/\s/g, "") === currentBook ? (
-                  <a
-                    href={
-                      "/search/" +
-                      book.toLowerCase().replace(/\s/g, "") +
-                      "-" +
-                      "1"
-                    }
-                    className="block font-bold px-4 py-2 text-sm text-gray-700 bg-blue-100 hover:text-gray-900 cursor-pointer"
-                    role="menuitem"
-                  >
-                    {book}
-                  </a>
-                ) : (
-                  <a
-                    href={
-                      "/search/" +
-                      book.toLowerCase().replace(/\s/g, "") +
-                      "-" +
-                      "1"
-                    }
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                    role="menuitem"
-                  >
-                    {book}
-                  </a>
-                )
-              )}
+          <div className="absolute h-screen overflow-auto left-2 mt-2 w-full md:w-3/4 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+            <div>
+              {/* Old Testament */}
+              <a
+                className="block text-center px-4 py-2 text-sm text-gray-700 bg-gray-50 cursor-pointer disabled"
+                role="menuitem"
+              >
+                Old Testament
+              </a>
+              <div
+                className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-2"
+                role="menu"
+                aria-orientation="vertical"
+                aria-labelledby="options-menu"
+              >
+                {booksOT.map((book) =>
+                  book.toLowerCase().replace(/\s/g, "") === currentBook ? (
+                    <a
+                      href={
+                        "/search/" +
+                        book.toLowerCase().replace(/\s/g, "") +
+                        "-" +
+                        "1"
+                      }
+                      className="block font-bold px-4 py-2 text-sm text-gray-700 bg-blue-100 hover:text-gray-900 cursor-pointer"
+                      role="menuitem"
+                    >
+                      {book}
+                    </a>
+                  ) : (
+                    <a
+                      href={
+                        "/search/" +
+                        book.toLowerCase().replace(/\s/g, "") +
+                        "-" +
+                        "1"
+                      }
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                      role="menuitem"
+                    >
+                      {book}
+                    </a>
+                  )
+                )}
+              </div>
+              {/* New Testament */}
+              <a
+                className="block text-center px-4 py-2 text-sm text-gray-700 bg-gray-50 cursor-pointer disabled"
+                role="menuitem"
+              >
+                New Testament
+              </a>
+              <div
+                className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-2"
+                role="menu"
+                aria-orientation="vertical"
+                aria-labelledby="options-menu"
+              >
+                {booksNT.map((book) =>
+                  book.toLowerCase().replace(/\s/g, "") === currentBook ? (
+                    <a
+                      href={
+                        "/search/" +
+                        book.toLowerCase().replace(/\s/g, "") +
+                        "-" +
+                        "1"
+                      }
+                      className="block font-bold px-4 py-2 text-sm text-gray-700 bg-blue-100 hover:text-gray-900 cursor-pointer"
+                      role="menuitem"
+                    >
+                      {book}
+                    </a>
+                  ) : (
+                    <a
+                      href={
+                        "/search/" +
+                        book.toLowerCase().replace(/\s/g, "") +
+                        "-" +
+                        "1"
+                      }
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                      role="menuitem"
+                    >
+                      {book}
+                    </a>
+                  )
+                )}
+              </div>
             </div>
           </div>
         )}

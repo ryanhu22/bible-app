@@ -188,7 +188,6 @@ export default function SearchPage() {
         )}
       </div>
 
-      {/* Burger Menu */}
       <div className="">
         <Search
           bookInput={bookInput}
