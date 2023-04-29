@@ -34,6 +34,8 @@ function PassageMobile({ passageHTML, searchFunc, book, chapter }) {
   const [inputPopupX, setInputPopupX] = useState(0);
   const [inputPopupY, setInputPopupY] = useState(0);
 
+  console.log(globalRange);
+
   // Refs
   const propRef = useRef(null); // Used for saving the HTML for this prop
 
