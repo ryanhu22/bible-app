@@ -314,27 +314,15 @@ function PassageMobile({ passageHTML, searchFunc, book, chapter }) {
   };
 
   const highlightYellow = () => {
-    const selection = window.getSelection();
-    if (selection) {
-      if (!selection.isCollapsed) {
-        console.log("Selection Yellow");
-        const range = selection.getRangeAt(0);
+    console.log("Selection Yellow");
 
-        const clearHighlight = highlightRange(globalRange, "span", {
-          class: `bg-yellow-100`,
-        });
-        const uniqueId =
-          Date.now().toString(36) + Math.random().toString(36).substring(2, 5);
-        addHighlight(uniqueId, clearHighlight);
-      }
+    const clearHighlight = highlightRange(globalRange, "span", {
+      class: `bg-yellow-100`,
+    });
+    const uniqueId =
+      Date.now().toString(36) + Math.random().toString(36).substring(2, 5);
+    addHighlight(uniqueId, clearHighlight);
 
-      // Remove user selection
-      if (selection.empty) {
-        selection.empty();
-      }
-    } else {
-      return null;
-    }
     const curr_html = propRef.current.outerHTML;
     if (session?.user) {
       saveHTMLToDB(session.user.email, book, chapter, curr_html);
