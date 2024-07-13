@@ -4,4 +4,7 @@ module.exports = {
   images: {
     domains: ["links.papareact.com", "https://cdn.fakercloud.com/avatars"],
   },
+  env: {
+    SITE: "https://bible-4ayisfxfq-ryanhu22s-projects.vercel.app",
+  },
 };
