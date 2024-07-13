@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react";
 import React from "react";
-import ReactHtmlParser from "react-html-parser";
 import highlightRange from "dom-highlight-range";
 import {
   ArrowLeftCircleIcon,
