@@ -417,7 +417,7 @@ function PassageMobile({ passageHTML, searchFunc, book, chapter }) {
     const clearHighlight = highlightRange(globalRange, "span", {
       id: uniqueId,
       class: "bg-yellow-400 hover:bg-yellow-300 cursor-pointer",
-      onClick: `commentClick("${uniqueId}")`,
+      onClick: `commentClick("${uniqueId}", "${commentInput}", ${inputPopupX}, ${inputPopupY}, false, 0)`,
       onMouseEnter: `showCommentScriptFunc("${commentInput}", ${inputPopupX}, ${inputPopupY})`,
       onMouseLeave: `hideCommentScriptFunc(${inputPopupX}, ${inputPopupY})`,
     });
@@ -543,20 +543,26 @@ function PassageMobile({ passageHTML, searchFunc, book, chapter }) {
               <Helmet>
                 {/* invisible element to body, useEffect that when something's appended to body, clear mod */}
                 <script>
-                  {`function commentClick(commentID) {
-                      const spans = document.querySelectorAll('span');
-                      // Loop through the spans and delete the one with id="abc"
-                      spans.forEach((span) => {
-                        if (span.id === commentID) {
-                          while (span.firstChild) {
-                            span.parentNode.insertBefore(span.firstChild, span);
-                          }
-                        }
-                      });
+                  {`function commentClick(commentID, commentText, x_coord, y_coord, isDelete, clickCounter) {
+                      if (!isDelete) {
+                        const comment = document.createElement('div');
+                        comment.style.position = "absolute";
+                        comment.style.left = x_coord + "px";
+                        comment.style.top = y_coord + "px";
+                        comment.textContent = commentText;
+                        comment.style.border = '1px solid black';
+                        comment.style.borderRadius = '5px';
+                        comment.style.backgroundColor = 'white';
+                        comment.style.padding = '5px';
+                        comment.style.textAlign = 'center';
+                        comment.style.margin = '10px';
+                        const passageDiv = document.getElementById('passagediv');
+                        passageDiv.appendChild(comment);
+                      }
                   }`}
                 </script>
               </Helmet>
-
+              {/* Put an invisible element on the document body if eraser mode is on */}
               <Helmet>
                 <script>
                   {`function showCommentScriptFunc(commentText, x_coord, y_coord) {

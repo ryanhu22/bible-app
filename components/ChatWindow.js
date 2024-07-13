@@ -70,21 +70,12 @@ function ChatWindow() {
     setResponseWaiting(true);
 
     var responseMessage = "";
-    if (session?.user) {
-      // await ChatGPT response
-      const response = await gpt_api(e, userInputCopy);
-      responseMessage = {
-        from: "other",
-        text: response,
-      };
-    } else {
-      // Fake message
-      await sleep(1500);
-      responseMessage = {
-        from: "other",
-        text: "I'm a mock response",
-      };
-    }
+    // await ChatGPT response
+    const response = await gpt_api(e, userInputCopy);
+    responseMessage = {
+      from: "other",
+      text: response,
+    };
 
     addMessage(responseMessage);
     setResponseWaiting(false);
