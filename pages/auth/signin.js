@@ -26,7 +26,7 @@ function signin({ providers }) {
             <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
               Sign in to your account
             </h2>
-            <p className="mt-2 text-center text-sm text-gray-600">
+            {/* <p className="mt-2 text-center text-sm text-gray-600">
               Or{" "}
               <a
                 href="#"
@@ -34,7 +34,7 @@ function signin({ providers }) {
               >
                 create an account
               </a>
-            </p>
+            </p> */}
           </div>
 
           {/* Google Sign on */}
@@ -65,7 +65,7 @@ function signin({ providers }) {
             </div>
           ))}
 
-          <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+          {/* <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
             <div className="rounded-md shadow-sm">
               <div>
                 <label htmlFor="email-address" className="sr-only">
@@ -130,7 +130,7 @@ function signin({ providers }) {
                 </p>
               </div>
             </div>
-          </form>
+          </form> */}
         </div>
       </div>
     </div>

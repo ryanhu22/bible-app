@@ -192,12 +192,12 @@ export default function SearchPage() {
             <div className="pb-3 z-1">
               <BurgerMenu currentBook={book} />
             </div>
-            <button
+            {/* <button
               className="py-2 px-4 bg-blue-300 hover:bg-blue-600 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
               onClick={signIn}
             >
               Sign in
-            </button>
+            </button> */}
           </div>
         )}
       </div>
